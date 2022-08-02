@@ -10,7 +10,8 @@ Class PrintNavigation extends GetNavigation {
           echo '<button class="buttonForm">'.$value['nomNav'].'</button>';
           $select = "SELECT `idNav`, `nomNav`, `cheminNav`, `menuVisible`, `zoneMenu`, `ordre`, `niveau`, `valide`, `deroulant`, `targetRoute`
           FROM `navigation`
-          WHERE `zoneMenu` = :zoneMenu AND `niveau` = :niveau AND `valide` = 1";
+          WHERE `zoneMenu` = :zoneMenu AND `niveau` = :niveau AND `valide` = 1
+          ORDER BY `ordre` DESC";
           $param = [['prep'=>':zoneMenu', 'variable'=>$value['deroulant']],['prep'=>':niveau', 'variable'=>$value['niveau']]];
           $readData = new RCUD($select, $param);
           $dataTraiter = $readData->READ();
