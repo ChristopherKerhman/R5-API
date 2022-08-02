@@ -1,0 +1,199 @@
+/*Fonts*/
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;400&display=swap');
+/* font-family: 'IBM Plex Sans', sans-serif; */
+
+/*Présentation Graine*/
+/*Variables CSS*/
+:root {
+  /*Variable lier au boutton*/
+  --main-background-color:  #6c6c6c;
+  --main-border: 1px  solid #04ff00;
+  --main-color: white;
+  --main-padding: 15px 32px;
+  --main-text-align: center;
+  --main-text-decoration: none;
+  --main-display: inline-block;
+  --main-font-size: 16px;
+  --main-cursor: pointer;
+  /*Autres variable*/
+  --main-font-family: 'IBM Plex Sans', sans-serif;
+}
+/*Presentation basique*/
+body {
+  background-color: #000000;
+  color: #04ff00;
+}
+h1, h2 {
+  font-size: 2em;
+  font-family: var(--main-font-family);
+}
+h3 {
+  font-size: 1.5em;
+  font-family: var(--main-font-family);
+}
+a {
+  text-decoration: none;
+}
+header, main {
+  border:var(--main-border);
+  margin-bottom: 1em;
+}
+main {
+    padding-bottom: 1.5em;
+}
+/*Listes*/
+.listeProfil {
+  list-style: none;
+  text-align: left;
+}
+.listeObjet {
+  list-style: none;
+  display: flex;
+  align-items: flex-start;
+  align-content: center;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  padding-left: 3em;
+}
+.listeObjet li {
+  padding-bottom: 0.5em;
+}
+/*Flex*/
+.flex-rows {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+.flex-colonne {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+/*Formulaire*/
+.formulaireClassique {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  margin-bottom: 0.5em;
+}
+
+input, label, select {
+  margin-bottom: 0.5em;
+}
+.buttonForm {
+  margin: 0.5em;
+}
+/*Fin formulaire*/
+/*Titre et sousTitre*/
+.hautPage {
+  text-align: center;
+}
+main {
+  text-align: center;
+}
+footer {
+    text-align: center;
+}
+/*Navigation*/
+/*Navigation bandeau*/
+.navigationBandeau {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.navigationBandeau li {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  margin-left: 1em;
+  margin-right: 1em;
+  text-align: center;
+}
+/*Bouton lien*/
+/*Variable CSS boutton*/
+
+/*Fin Maitre boutton*/
+button {
+  background-color: var(--main-background-color);
+  border: var(--main-border);
+  color: var(--main-color);
+  padding: var(--main-padding);
+  text-align: var(--main-text-align);
+  text-decoration: var(--main-text-decoration);
+  display: var(--main-display);
+  font-size: var(--main-font-size);
+  cursor: var(--main-cursor);
+  font-family: var(--main-font-family);
+}
+a {
+  background-color: var(--main-background-color);
+  border: var(--main-border);
+  color: var(--main-color);
+  padding: var(--main-padding);
+  text-align: var(--main-text-align);
+  text-decoration: var(--main-text-decoration);
+  display: var(--main-display);
+  font-size: var(--main-font-size);
+  cursor: var(--main-cursor);
+  font-family: var(--main-font-family);
+}
+.lienInterne {
+
+}
+.lienNav {
+  background-color: var(--main-background-color);
+  border: var(--main-border);
+  color: var(--main-color);
+  padding: var(--main-padding);
+  text-align: var(--main-text-align);
+  text-decoration: var(--main-text-decoration);
+  display: var(--main-display);
+  font-size: var(--main-font-size);
+  cursor: var(--main-cursor);
+  font-family: var(--main-font-family);
+}
+.lienNav:hover {
+   border: 3px solid #302A39ff;
+   transition: border 0.7s;
+}
+/*Menu bandeau Tester sur un autre projet*/
+.dropdown {
+display: inline-block;
+}
+.dropdown-child {
+position: absolute;
+display: none;
+min-width: 250px;
+}
+
+.dropdown-child a {
+  background-color: var(--main-background-color);
+  border: var(--main-border);
+  color: var(--main-color);
+  /* padding: var(--main-padding); */
+  text-align: var(--main-text-align);
+  text-decoration: var(--main-text-decoration);
+  display: var(--main-display);
+  font-size: var(--main-font-size);
+  cursor: var(--main-cursor);
+  font-family: var(--main-font-family);
+  padding: 20px;
+  display: block;
+}
+.dropdown:hover .dropdown-child {
+display: block;
+transition: display 3s;
+}
+/*Fin présentation graines*/
+/*Presentation API-R5*/
+.articleRS {
+  text-align: justify;
+  font-size: 1em;
+  max-width: 80%;
+}
