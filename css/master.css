@@ -58,6 +58,11 @@ main {
 .listeObjet li {
   padding-bottom: 0.5em;
 }
+.routeForm{
+  list-style: none;
+  font-size: 1.2em;
+  text-align: left;
+}
 /*Flex*/
 .flex-rows {
   display: flex;
@@ -196,4 +201,18 @@ transition: display 3s;
   text-align: justify;
   font-size: 1em;
   max-width: 80%;
+}
+.listeStandard {
+  list-style: none;
+  text-align: left;
+}
+.listeStandard li {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+.listeStandard form {
+  padding-right: 1em;
 }

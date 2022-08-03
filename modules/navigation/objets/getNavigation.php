@@ -31,7 +31,9 @@ Class GetNavigation {
     return $readData->READ();
   }
   public function toutesRoutesForm() {
-      $select = "SELECT `idForm`, `chemin`, `securiter` FROM `routageForm` WHERE `valide` = 1 ORDER BY `securiter` DESC, `idForm`";
+      $select = "SELECT `idForm`, `chemin`, `securiter` FROM `routageForm`
+      WHERE `valide` = 1
+      ORDER BY `securiter` ASC, `idForm` DESC";
       $void = array();
       $readData = new RCUD($select, $void);
       return $readData->READ();

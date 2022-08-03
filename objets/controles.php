@@ -13,7 +13,6 @@ class Controles {
       return 1;
     }
   }
-
   function __destruct() {
   }
 }

@@ -11,7 +11,7 @@ Class PrintNavigation extends GetNavigation {
           $select = "SELECT `idNav`, `nomNav`, `cheminNav`, `menuVisible`, `zoneMenu`, `ordre`, `niveau`, `valide`, `deroulant`, `targetRoute`
           FROM `navigation`
           WHERE `zoneMenu` = :zoneMenu AND `niveau` = :niveau AND `valide` = 1
-          ORDER BY `ordre` DESC";
+          ORDER BY `ordre`";
           $param = [['prep'=>':zoneMenu', 'variable'=>$value['deroulant']],['prep'=>':niveau', 'variable'=>$value['niveau']]];
           $readData = new RCUD($select, $param);
           $dataTraiter = $readData->READ();
@@ -51,7 +51,7 @@ Class PrintNavigation extends GetNavigation {
     echo '</ul>';
   }
   public function listeRouteForm($variable, $securiter) {
-    echo '<ul>';
+    echo '<ul class="routeForm">';
       foreach ($variable as $key => $value) {
         echo '<li>'.$securiter[$value['securiter']].' | '.$value['chemin'].' |Action => encodeRoutage('.$value['idForm'].')</li>';
       }
