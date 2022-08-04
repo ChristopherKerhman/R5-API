@@ -216,3 +216,7 @@ transition: display 3s;
 .listeStandard form {
   padding-right: 1em;
 }
+.formulaireInterne {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}

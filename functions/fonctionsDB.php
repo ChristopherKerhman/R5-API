@@ -80,11 +80,25 @@ function redirect($data, $idNav) {
     return $dataTraiter;
   }
  }
-
 function findTargetRoute($id) {
   $select ="SELECT  `targetRoute` FROM `navigation` WHERE `idNav` = :idNav";
   $param = [['prep'=>':idNav', 'variable'=>$id]];
   $findRoute = new RCUD($select, $param);
   $route = $findRoute->READ();
   return 'index.php?idNav='.$route[0]['targetRoute'];
+}
+function tailleDesChamps($data, $array_size) {
+  $controle = array();
+  $ok = array();
+  foreach ($array_size as $key => $value) {
+      array_push($controle, sizePost(filter($data[$value['nom']]), $value['max']));
+  }
+  for ($i=0; $i <count($array_size); $i++) {
+    array_push($ok, 0);
+  }
+  if($ok == $controle) {
+    return true;
+  } else {
+    return false;
+  }
 }
