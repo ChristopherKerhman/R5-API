@@ -6,10 +6,11 @@ $size = [['nom'=>'id_Faction', 'max'=>10],
         ['nom'=>'description', 'max'=>600],
         ['nom'=>'puissance', 'max'=>1],
         ['nom'=>'range', 'max'=>3],
-        ['nom'=>'gabarit', 'max'=>1]];
+        ['nom'=>'gabarit', 'max'=>1],
+        ['nom'=>'surPuissance', 'max'=>1]];
 if(tailleDesChamps($_POST, $size)) {
-  $insert = "INSERT INTO `armes`(`id_Faction`, `nomArme`, `description`, `range`, `puissance`, `typeArme`, `gabarit`)
-  VALUES (:id_Faction, :nomArme, :description, :range, :puissance, :typeArme, :gabarit)";
+  $insert = "INSERT INTO `armes`(`id_Faction`, `nomArme`, `description`, `range`, `puissance`, `surPuissance`, `typeArme`, `gabarit`)
+  VALUES (:id_Faction, :nomArme, :description, :range, :puissance, :surPuissance, :typeArme, :gabarit)";
     $parametre = new Preparation();
     $param = $parametre->creationPrep ($_POST);
       $action = new RCUD($insert, $param);

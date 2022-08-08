@@ -163,10 +163,7 @@ a {
   cursor: var(--main-cursor);
   font-family: var(--main-font-family);
 }
-.lienNav:hover {
-   border: 3px solid #302A39ff;
-   transition: border 0.7s;
-}
+
 /*Menu bandeau Tester sur un autre projet*/
 .dropdown {
 display: inline-block;
@@ -219,4 +216,7 @@ transition: display 3s;
 .formulaireInterne {
   margin-top: 1em;
   margin-bottom: 1em;
+}
+.navigationListe {
+  margin-right: 1em;
 }
