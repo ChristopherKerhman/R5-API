@@ -19,7 +19,6 @@ Class PrintArmes extends GetArmes {
   echo'</select>
   <label for="nomArme">Nom de l\'arme</label>
   <input id="nomArme" type="text" name="nomArme" required/>
-
   <label for="description">Description de l\'arme</label>
   <textarea id="description" name="description" rows="8" cols="80" required></textarea>
   <div class="formulaireInterne">
@@ -35,8 +34,20 @@ Class PrintArmes extends GetArmes {
       echo  '<option value="'.$i.'">'.$this->yes[$i].'</option>';
     }
     echo'</select>
+    </div>
+    <div class="formulaireInterne">
+    <label for="couverture">Arme de couverture ?</label>
+    <select id="couverture" name="couverture">';
+    for ($i=0; $i <count($this->yes) ; $i++) {
+      echo  '<option value="'.$i.'">'.$this->yes[$i].'</option>';
+    }
+    echo'</select>
+    <label for="cadenceTir">Cadence de tir de l\'arme ?</label>
+    <input id="cadenceTir" name="cadenceTir" type="number" min="0" max="11" step="1" placeholder="0" required />
+    </div>
+      <div class="formulaireInterne">
         <label for="range">Portée de l\'arme (en pouces)</label>
-        <input id="range" name="range" type="number" min="0" max="80" step="1" placeholder="0" required />
+        <input id="range" name="range" type="number" min="0" max="80" step="1" value="0" required />
         <label for="gabarit">Gabarit</label>
         <select id="gabarit" name="gabarit">';
         for ($i=0; $i <count($this->gabarit) ; $i++) {
@@ -44,6 +55,7 @@ Class PrintArmes extends GetArmes {
         }
         echo'</select>
     </div>
+
   <button type="submit" name="idNav" value="'.$idNav.'">Ajouter</button>
   </form>';
   }
@@ -55,12 +67,13 @@ Class PrintArmes extends GetArmes {
         echo '<li><a class="navigationListe" href="'.findTargetRoute(105).'&idArme='.$value['idArme'].'">Voir fiche</a>';
         if(($value['range'] >= 0)&&($value['gabarit'] > 0)) {
           if($value['range'] == 0) { $range = 'Contact';} else {$range = $value['range'].' "';}
-            echo 'Nom : '.$value['nomArme'].' - Type: '.$this->typeArmes[$value['typeArme']].' - '.$this->puissance[$value['puissance']].$PP.' Portée : '.$range.' - Gabarit '.$this->gabarit[$value['gabarit']];
+          echo 'Nom : '.$value['nomArme'].' - Type: '.$this->typeArmes[$value['typeArme']].' - '.$this->puissance[$value['puissance']].$PP.' Portée : '.$range.' - Gabarit '.$this->gabarit[$value['gabarit']];
         } elseif (($value['range'] > 0)&&($value['gabarit'] == 0)) {
-          echo 'Nom : '.$value['nomArme'].' - Type: '.$this->typeArmes[$value['typeArme']].' - '.$this->puissance[$value['puissance']].$PP.' - Portée : '.$value['range'].' "  ';
+          echo 'Nom : '.$value['nomArme'].' - Type: '.$this->typeArmes[$value['typeArme']].' - '.$this->puissance[$value['puissance']].$PP.' - Portée : '.$value['range'].' " / '.round($value['range']*2.54, 0).' cm  ';
         } elseif (($value['range'] == 0)&&($value['gabarit'] == 0)) {
           echo 'Nom : '.$value['nomArme'].' - Type: '.$this->typeArmes[$value['typeArme']].' - '.$this->puissance[$value['puissance']].$PP.' - Contact  ';
         }
+          echo '<br />Couverture : '.$this->yes[$value['couverture']]; if($value['couverture']) {echo ' | Cadence de tir: '. $value['cadenceTir'];}
         echo '</li>';
   }
     echo '</ul>';
@@ -68,15 +81,18 @@ Class PrintArmes extends GetArmes {
   public function afficherUneArme($data) {
     echo '<ul class="listeStandard">';
     if(($data[0]['range'] > 0)&&($data[0]['gabarit'] > 0)) {
-        echo '<li><h3>Nom : '.$data[0]['nomArme'].'</h3></li><li>Type: '.$this->typeArmes[$data[0]['typeArme']].'</li><li>Puissance : '.$this->puissance[$data[0]['puissance']].'</li><li>'.$data[0]['range'].' "</li><li>Gabarit '.$this->gabarit[$data[0]['gabarit']].'</li>';
+        echo '<li><h3>Nom : '.$data[0]['nomArme'].'</h3></li><li>Type: '.$this->typeArmes[$data[0]['typeArme']].'</li><li>Puissance : '.$this->puissance[$data[0]['puissance']].'</li><li> Portée : '.$data[0]['range'].' "/
+         '.round($data[0]['range']*2.54, 0).' cm "</li><li>Gabarit '.$this->gabarit[$data[0]['gabarit']].'</li>';
     } elseif (($data[0]['range'] == 0)&&($data[0]['gabarit'] > 0)) {
         echo '<li><h3>Nom : '.$data[0]['nomArme'].'</h3></li><li>Type: '.$this->typeArmes[$data[0]['typeArme']].'</li><li>Puissance : '.$this->puissance[$data[0]['puissance']].'</li><li>Gabarit '.$this->gabarit[$data[0]['gabarit']].'</li>  ';
     } elseif (($data[0]['range'] > 0)&&($data[0]['gabarit'] == 0)) {
-      echo '<li><h3>Nom : '.$data[0]['nomArme'].'</h3></li><li>Type: '.$this->typeArmes[$data[0]['typeArme']].'</li><li>Puissance : '.$this->puissance[$data[0]['puissance']].'</li><li>'.$data[0]['range'].' "</li>  ';
+      echo '<li><h3>Nom : '.$data[0]['nomArme'].'</h3></li><li>Type: '.$this->typeArmes[$data[0]['typeArme']].'</li><li>Puissance : '.$this->puissance[$data[0]['puissance']].'</li><li>Portée : '.$data[0]['range'].' "/
+       '.round($data[0]['range']*2.54, 0).' cm</li>';
     } elseif (($data[0]['range'] == 0)&&($data[0]['gabarit'] == 0)) {
       echo '<li><h3>Nom : '.$data[0]['nomArme'].'</h3></li><li>Type: '.$this->typeArmes[$data[0]['typeArme']].'</li><li>Puissance : '.$this->puissance[$data[0]['puissance']].'</li>';
     }
-    echo '<li><h4>Description de l\'arme : </h4></li><li>'.$data[0]['description'].'</li> ';
+      echo '<br />Couverture : '.$this->yes[$data[0]['couverture']]; if($data[0]['couverture']) {echo ' | Cadence de tir: '. $data[0]['cadenceTir'];}
+    echo '<li><h4>Description de l\'arme : </h4></li><li>'.$data[0]['description'].'</li>';
     echo '</ul>';
   }
 }
