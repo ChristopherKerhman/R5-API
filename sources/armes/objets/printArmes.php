@@ -79,9 +79,9 @@ Class PrintArmes extends GetArmes {
   }
     echo '</ul>';
   }
-  public function afficherUneArme($data, $dataRS) {
+  public function afficherUneArme($data, $dataRS, $coef) {
     echo '<ul class="listeStandard">';
-      echo '<li><h3>'.$data[0]['nomUnivers'].' Faction : '.$data[0]['nomFaction'].'</h3></li>';
+      echo '<li><h3>'.$data[0]['nomUnivers'].' Faction : '.$data[0]['nomFaction'].' Prix : '.(round($coef,0)/100).'</h3></li>';
     if(($data[0]['range'] > 0)&&($data[0]['gabarit'] > 0)) {
         echo '<li><h4>Nom : '.$data[0]['nomArme'].'</h4></li><li>Type: '.$this->typeArmes[$data[0]['typeArme']].'</li><li>Puissance : '.$this->puissance[$data[0]['puissance']].'</li><li> Portée : '.$data[0]['range'].' "/
          '.round($data[0]['range']*2.54, 0).' cm "</li><li>Gabarit '.$this->gabarit[$data[0]['gabarit']].'</li>';

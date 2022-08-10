@@ -21,7 +21,8 @@ Class getReglesSpecial  {
     FROM `reglesSpeciales`
     WHERE `idRS`  NOT IN ( SELECT `id_RS`
                             FROM `ArmesRS`
-       	                    WHERE `id_Arme` = :id_Arme)";
+       	                    WHERE `id_Arme` = :id_Arme)
+                            AND `typeRS` = 0";
     $param =  [['prep'=>':id_Arme', 'variable'=>$idArme]];
     $readRS = new RCUD($select, $param);
     return  $readRS->READ();
