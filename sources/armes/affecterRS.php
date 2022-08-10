@@ -5,7 +5,7 @@
   require 'sources/reglesSpeciales/objets/getRS.php';
   require 'sources/reglesSpeciales/objets/printRS.php';
   $reglesSpeciales = new printReglesSpecial();
-  $dataRSArme = $reglesSpeciales->getRSparType(0, 1);
+  $dataRSArme = $reglesSpeciales->getAffectationRS($idArme);
   $armes = new PrintArmes();
   $dataArme= $armes->uneArme(1, $idArme);
   $dataRS = $armes->getRSUneArme ($idArme);

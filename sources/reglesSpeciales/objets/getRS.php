@@ -16,6 +16,18 @@ Class getReglesSpecial  {
     $readRS = new RCUD($select, $param);
     return $readRS->READ();
   }
+  public function getAffectationRS($idArme) {
+    $select = "SELECT `idRS`, `nomRS`
+    FROM `reglesSpeciales`
+    WHERE `idRS`  NOT IN ( SELECT `id_RS`
+                            FROM `ArmesRS`
+       	                    WHERE `id_Arme` = :id_Arme)";
+    $param =  [['prep'=>':id_Arme', 'variable'=>$idArme]];
+    $readRS = new RCUD($select, $param);
+    return  $readRS->READ();
+  }
+
+
   public function getOneRS ($id) {
     $param = [['prep'=>':idRS', 'variable'=>$id]];
     $select = "SELECT `idRS`, `nomRS`, `texteRS`, `prixRS`, `valideRS`, `typeRS` FROM `reglesSpeciales` WHERE `idRS` = :idRS";

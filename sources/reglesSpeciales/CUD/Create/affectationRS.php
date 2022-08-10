@@ -9,11 +9,11 @@ if($crossRoads == 1) {
   $doublon = new RCUD($select, $param);
   $controle = $doublon->READ();
     if($controle == []){
-    $requetteSQL = "INSERT INTO `ArmesRS`(`id_RS`, `id_Arme`) VALUES (:id_RS, :id_Arme)";
-    $message = "Règle spéciale enregistré";
-  } else {
-    $message = "Règle déjà affectée";
-  }
+      $requetteSQL = "INSERT INTO `ArmesRS`(`id_RS`, `id_Arme`) VALUES (:id_RS, :id_Arme)";
+      $message = "Règle spéciale enregistré";
+    } else {
+      $message = "Règle déjà affectée";
+    }
 } else {
   $controle = array();
   $requetteSQL = "DELETE FROM `ArmesRS` WHERE `id_RS` = :id_RS AND `id_Arme` = :id_Arme";

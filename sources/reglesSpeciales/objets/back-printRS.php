@@ -66,15 +66,14 @@ Class printReglesSpecial extends  getReglesSpecial {
     </form>';
   }
   public function affecterRS($variable, $idNav, $idArme, $affecter) {
-    // Traitement de variable
     echo '<aside class="nuageRS">';
     foreach ($variable as $key => $value) {
-        echo '<form action="'.encodeRoutage(27).'" method="post">
+          echo '<form action="'.encodeRoutage(27).'" method="post">
                 <input type="hidden" name="addRS" value="1" />
                 <input type="hidden" name="id_RS" value="'.$value['idRS'].'">
                 <input type="hidden" name="id_Arme" value="'.$idArme.'">
                 <button type="submit" name="idNav" value="'.$idNav.'">'.$value['nomRS'].'</button>
-                </form>';
+              </form>';
       }
     echo '</aside>';
   }
