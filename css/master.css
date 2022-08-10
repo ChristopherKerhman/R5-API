@@ -209,6 +209,7 @@ transition: display 3s;
   justify-content: flex-start;
   flex-wrap: nowrap;
   flex-direction: row;
+  margin-bottom: 0.5em;
 }
 .listeStandard form {
   padding-right: 1em;
@@ -219,4 +220,15 @@ transition: display 3s;
 }
 .navigationListe {
   margin-right: 1em;
+}
+.nuageRS {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.nuageRS form {
+  margin-bottom: 0.5em;
+  margin-left: 0.25em;
+  margin-right: 0.25em;
 }

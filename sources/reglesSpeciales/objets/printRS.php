@@ -65,4 +65,28 @@ Class printReglesSpecial extends  getReglesSpecial {
       <button type="submit" name="idNav" value="'.$idNav.'">Modifier la règles spéciales '.$data[0]['nomRS'].'</button>
     </form>';
   }
+  public function affecterRS($variable, $idNav, $idArme, $affecter) {
+    echo '<aside class="nuageRS">';
+    foreach ($variable as $key => $value) {
+          echo '<form action="'.encodeRoutage(27).'" method="post">
+                <input type="hidden" name="addRS" value="1" />
+                <input type="hidden" name="id_RS" value="'.$value['idRS'].'">
+                <input type="hidden" name="id_Arme" value="'.$idArme.'">
+                <button type="submit" name="idNav" value="'.$idNav.'">'.$value['nomRS'].'</button>
+              </form>';
+      }
+    echo '</aside>';
+  }
+  public function delRSArme ($variable, $idNav, $idArme) {
+    echo '<aside class="nuageRS">';
+    foreach ($variable as $key => $value) {
+  echo '<form action="'.encodeRoutage(27).'" method="post">
+        <input type="hidden" name="addRS" value="0" />
+        <input type="hidden" name="id_RS" value="'.$value['id_RS'].'">
+        <input type="hidden" name="id_Arme" value="'.$idArme.'">
+        <button type="submit" name="idNav" value="'.$idNav.'">'.$value['nomRS'].'</button>
+      </form>';
+    }
+    echo '</aside>';
+  }
 }

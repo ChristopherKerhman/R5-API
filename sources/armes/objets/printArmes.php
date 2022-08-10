@@ -64,7 +64,8 @@ Class PrintArmes extends GetArmes {
     echo '<ul class="listeStandard">';
       foreach ($variable as $key => $value) {
         if($value['surPuissance']>0) {$PP = '++';} else {$PP = NULL;}
-        echo '<li><a class="navigationListe" href="'.findTargetRoute(105).'&idArme='.$value['idArme'].'">Voir fiche</a>';
+        echo '<li><a class="navigationListe" href="'.findTargetRoute(105).'&idArme='.$value['idArme'].'">Voir fiche</a><a class="navigationListe" href="'.findTargetRoute(106).'&idArme='.$value['idArme'].'">Ajouter RS</a>';
+        echo $value['nomUnivers'].' Faction : '.$value['nomFaction'].'<br />';
         if(($value['range'] >= 0)&&($value['gabarit'] > 0)) {
           if($value['range'] == 0) { $range = 'Contact';} else {$range = $value['range'].' "';}
           echo 'Nom : '.$value['nomArme'].' - Type: '.$this->typeArmes[$value['typeArme']].' - '.$this->puissance[$value['puissance']].$PP.' Portée : '.$range.' - Gabarit '.$this->gabarit[$value['gabarit']];
@@ -78,10 +79,11 @@ Class PrintArmes extends GetArmes {
   }
     echo '</ul>';
   }
-  public function afficherUneArme($data) {
+  public function afficherUneArme($data, $dataRS) {
     echo '<ul class="listeStandard">';
+      echo '<li><h3>'.$data[0]['nomUnivers'].' Faction : '.$data[0]['nomFaction'].'</h3></li>';
     if(($data[0]['range'] > 0)&&($data[0]['gabarit'] > 0)) {
-        echo '<li><h3>Nom : '.$data[0]['nomArme'].'</h3></li><li>Type: '.$this->typeArmes[$data[0]['typeArme']].'</li><li>Puissance : '.$this->puissance[$data[0]['puissance']].'</li><li> Portée : '.$data[0]['range'].' "/
+        echo '<li><h4>Nom : '.$data[0]['nomArme'].'</h4></li><li>Type: '.$this->typeArmes[$data[0]['typeArme']].'</li><li>Puissance : '.$this->puissance[$data[0]['puissance']].'</li><li> Portée : '.$data[0]['range'].' "/
          '.round($data[0]['range']*2.54, 0).' cm "</li><li>Gabarit '.$this->gabarit[$data[0]['gabarit']].'</li>';
     } elseif (($data[0]['range'] == 0)&&($data[0]['gabarit'] > 0)) {
         echo '<li><h3>Nom : '.$data[0]['nomArme'].'</h3></li><li>Type: '.$this->typeArmes[$data[0]['typeArme']].'</li><li>Puissance : '.$this->puissance[$data[0]['puissance']].'</li><li>Gabarit '.$this->gabarit[$data[0]['gabarit']].'</li>  ';
@@ -93,6 +95,11 @@ Class PrintArmes extends GetArmes {
     }
       echo '<br />Couverture : '.$this->yes[$data[0]['couverture']]; if($data[0]['couverture']) {echo ' | Cadence de tir: '. $data[0]['cadenceTir'];}
     echo '<li><h4>Description de l\'arme : </h4></li><li>'.$data[0]['description'].'</li>';
+    echo '<li>Règles spéciales : ';
+    foreach ($dataRS as $cle => $valeur) {
+      echo $valeur['nomRS'].'.';
+    }
+    echo '</li>';
     echo '</ul>';
   }
 }

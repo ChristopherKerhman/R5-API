@@ -19,6 +19,7 @@ Class GetArmes {
     INNER JOIN `factions` ON `id_Faction` = `idFaction`
     INNER JOIN `univers` ON `id_Univers` = `idUnivers`
     WHERE `armes`.`valide` = :valide
+    ORDER BY `nomUnivers`, `nomFaction`, `nomArme`
     LIMIT {$premier}, {$parPage}";
     $param = [['prep'=>':valide', 'variable'=>$valide]];
     $readData = new RCUD($select, $param);
@@ -36,5 +37,16 @@ Class GetArmes {
     $param = [['prep'=>':valide', 'variable'=>$valide], ['prep'=>':idArme', 'variable'=>$id]];
     $readData = new RCUD($select, $param);
     return $readData->READ();
+  }
+  public function getRSUneArme ($idArme) {
+    // Recherche des règle spéciales déjà affecter
+    $select = "SELECT `nomRS`, `id_RS`
+    FROM `ArmesRS`
+    INNER JOIN `reglesSpeciales` ON `id_RS` = `idRS`
+    WHERE `id_Arme` = :id_Arme";
+    $param =  [['prep'=>':id_Arme', 'variable'=>$idArme]];
+    $readRS = new RCUD($select, $param);
+    return  $readRS->READ();
+    // Fin de recherche
   }
 }
