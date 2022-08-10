@@ -62,7 +62,7 @@ Class PrintArmes extends GetArmes {
   public function updateArmes($data, $idNav) {
       $faction = new PrintUF();
       $dataFaction = $faction->listeFactions(1);
-      echo '<h3>Ajouter une arme</h3>';
+      echo '<h3>Modifier '.$data[0]['nomArme'].'</h3>';
       echo '<form class="formulaireClassique" action="'.encodeRoutage(28).'" method="post">
       <label for="id_Faction">Faction de l\'arme ?</label>
       <select id="id_Faction" name="id_Faction">';
@@ -135,6 +135,11 @@ Class PrintArmes extends GetArmes {
     <input type="hidden" name="idArme" value="'.$data[0]['idArme'].'" />
   <button type="submit" name="idNav" value="'.$idNav.'">Modifier '.$data[0]['nomArme'].'</button>
   </form>';
+  echo '<form class="formulaireClassique" action="'.encodeRoutage(29).'" method="post">
+    <input type="hidden" name="idArme" value="'.$data[0]['idArme'].'" />
+    <button type="submit" name="idNav" value="'.$idNav.'">Cloner '.$data[0]['nomArme'].'</button>
+  </form>';
+
   }
 
   public function Ratellier($variable, $currentPage) {
