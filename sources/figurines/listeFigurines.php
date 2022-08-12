@@ -4,5 +4,5 @@
   112 / Modifier Figurine
   113 / Equiper figurine
 */
-
+  include 'sources/figurines/librairieObjet.php';
  ?>

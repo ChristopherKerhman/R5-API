@@ -1,6 +1,4 @@
 <?php
-require 'sources/univers/objets/getUF.php';
-require 'sources/univers/objets/printUF.php';
 Class PrintFigurine extends GetFigurines {
   public function addFigurine() {
     $faction = new PrintUF();

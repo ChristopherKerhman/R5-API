@@ -1,5 +1,4 @@
 <?php
-  require 'sources/armes/objets/getArmes.php';
-  require 'sources/armes/objets/printArmes.php';
+  require 'sources/armes/librairieObjet.php';
   $armes = new PrintArmes();
   $armes->addArmes($idNav);

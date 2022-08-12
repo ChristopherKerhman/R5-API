@@ -1,6 +1,4 @@
 <?php
-require 'sources/univers/objets/getUF.php';
-require 'sources/univers/objets/printUF.php';
 Class PrintArmes extends GetArmes {
   public function addArmes($idNav) {
       $faction = new PrintUF();

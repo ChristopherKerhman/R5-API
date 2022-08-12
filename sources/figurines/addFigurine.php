@@ -1,5 +1,4 @@
 <?php
-  require 'sources/figurines/objets/getFigurine.php';
-  require 'sources/figurines/objets/printFigurine.php';
+include 'sources/figurines/librairieObjet.php';
 $figurine = new PrintFigurine();
 $figurine->addFigurine();

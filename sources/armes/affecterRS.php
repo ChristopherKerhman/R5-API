@@ -1,10 +1,7 @@
 <?php
   $idArme = filter($_GET['idArme']);
-  require 'sources/armes/objets/getArmes.php';
-  require 'sources/armes/objets/printArmes.php';
-  require 'sources/reglesSpeciales/objets/getRS.php';
-  require 'sources/reglesSpeciales/objets/printRS.php';
-    include 'sources/calculs/calculArmes.php';
+  require 'sources/armes/librairieObjet.php';
+  include 'sources/calculs/calculArmes.php';
   $reglesSpeciales = new printReglesSpecial();
   $dataRSArme = $reglesSpeciales->getAffectationRS($idArme);
   $armes = new PrintArmes();
