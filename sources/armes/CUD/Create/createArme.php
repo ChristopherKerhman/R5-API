@@ -15,7 +15,7 @@ if(tailleDesChamps($_POST, $size)) {
     $param = $parametre->creationPrep ($_POST);
       $action = new RCUD($insert, $param);
       $action->CUD();
-  header('location:../index.php?message=Arme enregistré.&idNav='.$idNav);
+  header('location:../index.php?message=Arme enregistrée.&idNav='.$idNav);
 } else {
   header('location:../index.php?message=Certain champs sont trop grand.&idNav='.$idNav);
 }
