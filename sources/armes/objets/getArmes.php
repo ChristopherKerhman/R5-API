@@ -56,7 +56,7 @@ Class GetArmes {
   }
   public function getRSUneArme ($idArme) {
     // Recherche des règle spéciales déjà affecter
-    $select = "SELECT `nomRS`, `id_RS`
+    $select = "SELECT `idRS`, `nomRS`, `id_RS`
     FROM `ArmesRS`
     INNER JOIN `reglesSpeciales` ON `id_RS` = `idRS`
     WHERE `id_Arme` = :id_Arme";

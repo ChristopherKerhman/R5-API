@@ -85,8 +85,45 @@ echo'</select>
       }
       echo'</select>
   </div>
-
 <button type="submit" name="idNav" value="'.$idNav.'">Ajouter</button>
 </form>';
+  }
+  public function tableauFigurine($variable, $currentPage) {
+    echo '<h3>Les figurines créées - Page : '.$currentPage.'</h3>';
+    echo '<ul class="listeStandard">';
+      foreach ($variable as $key => $value) {
+        echo '<li>
+        <a class="navigationListe" href="'.findTargetRoute(111).'&idFigurine='.$value['idFigurine'].'">Voir fiche</a>
+        <a class="navigationListe" href="'.findTargetRoute(114).'&idFigurine='.$value['idFigurine'].'">Ajouter RS</a>
+        <a class="navigationListe" href="'.findTargetRoute(113).'&idFigurine='.$value['idFigurine'].'">Ajouter Armes</a>
+        <a class="navigationListe" href="'.findTargetRoute(112).'&idFigurine='.$value['idFigurine'].'">Modifier</a>
+        '.$value['nomUnivers'].' - '.$value['nomFaction'].' | '.$value['nomFigurine'].'
+        | Role : '.$this->role[$value['role']].' | DC/DQM : '.$this->de[$value['DC']].'/'.$this->de[$value['DQM']].' | Déplacement tactique '.$value['mouvement'].'"/ Course '.round($value['mouvement']*1.4, 0).'"</li>';
+  }
+    echo '</ul>';
+  }
+  public function figurineComplet ($figurine, $armes, $RS) {
+    //Affichage Statistique Figurine
+    echo '<h3>'.$figurine[0]['nomFigurine'].' | '.$figurine[0]['nomUnivers'].' - '.$figurine[0]['nomFaction'].'</h3>';
+    echo '<ul class="listeProfil">';
+      echo '<li>Mouvement '.$figurine[0]['mouvement'].' " / '.round($figurine[0]['mouvement'] * 1.4, 0).' + 1D4"</li>';
+      echo '<li>DQM : '.$this->de[$figurine[0]['DQM']].' | DC : '.$this->de[$figurine[0]['DC']].'</li>';
+      echo '<li>Role : '.$this->role[$figurine[0]['role']].'</li>';
+      echo '<li>Taille figurine : '.$this->taille[$figurine[0]['taille']].'</li>';
+      echo '<li>Armure : '.$this->armure[$figurine[0]['svg']].'</li>';
+      echo '<li>Point de vie : '.$figurine[0]['pdv'].'</li>';
+      echo '<li>Figurine volante : '.$this->yes[$figurine[0]['vol']].'</li>';
+      echo '<li>Capacité de vol stationnaire : '.$this->yes[$figurine[0]['volStation']].'</li>';
+        if($RS == []) {
+            echo '<li><strong class="liste">Pas encore de règles spéciales.</strong></li>';
+        } else {
+          print_r($RS);
+        }
+          if($armes == []) {
+            echo '<li><strong class="liste">Pas encore d\'armement.</strong></li>';
+          } else {
+            print_r($armes);
+          }
+        echo'</ul>';
   }
 }

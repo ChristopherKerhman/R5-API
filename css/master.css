@@ -232,3 +232,7 @@ transition: display 3s;
   margin-left: 0.25em;
   margin-right: 0.25em;
 }
+.liste {
+  margin-left: 1.5em;
+  margin-top: 1em;
+}

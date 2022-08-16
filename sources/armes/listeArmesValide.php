@@ -4,7 +4,7 @@
   $armes = new PrintArmes();
   ?>
   <form class="" action="<?php filter($_SERVER["PHP_SELF"]); ?>" method="post">
-    <label for="id_Faction">Arme de la faction ?</label>
+    <label for="id_Faction">Armes de la faction ?</label>
     <select id="id_Faction" name="id_Faction">
       <?php
         $factions = new PrintUF();
