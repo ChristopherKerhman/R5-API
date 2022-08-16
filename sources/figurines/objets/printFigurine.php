@@ -117,7 +117,12 @@ echo'</select>
         if($RS == []) {
             echo '<li><strong class="liste">Pas encore de règles spéciales.</strong></li>';
         } else {
-          print_r($RS);
+          echo '<li>Règles spéciales : ';
+          foreach ($RS as $cle => $valeur) {
+            echo $valeur['nomRS'].'.';
+          }
+          echo '</li>';
+
         }
           if($armes == []) {
             echo '<li><strong class="liste">Pas encore d\'armement.</strong></li>';

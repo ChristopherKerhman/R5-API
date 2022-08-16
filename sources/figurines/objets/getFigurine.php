@@ -49,7 +49,7 @@ ORDER BY `nomUnivers`, `nomFaction`, `nomFigurine`
   }
   public function getParamOneFigurine($idFigurine, $type) {
     //$type = 0 Règles spéciale, $type = 1 Armes
-    $select = ["SELECT `nomRS`, `texteRS`, `prixRS`, `typeRS`
+    $select = ["SELECT `nomRS`, `texteRS`, `prixRS`, `typeRS`, `idRS`
     FROM `RS_Figurine`
     INNER JOIN `reglesSpeciales` ON `idRS` = `id_RS`
     WHERE `id_Figurine` = :idFigurine",
