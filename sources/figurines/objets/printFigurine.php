@@ -104,6 +104,11 @@ echo'</select>
   }
   public function figurineComplet ($figurine, $armes, $RS) {
     //Affichage Statistique Figurine
+    if(($figurine[0]['vol']>0)||($figurine[0]['volStation']>0)) {
+      $vol = '<li>Figurine volante : '.$this->yes[$figurine[0]['vol']].'</li><li>Capacité de vol stationnaire : '.$this->yes[$figurine[0]['volStation']].'</li>';
+    } else {
+      $vol = '';
+    }
     echo '<h3>'.$figurine[0]['nomFigurine'].' | '.$figurine[0]['nomUnivers'].' - '.$figurine[0]['nomFaction'].'</h3>';
     echo '<ul class="listeProfil">';
       echo '<li>Mouvement '.$figurine[0]['mouvement'].' " / '.round($figurine[0]['mouvement'] * 1.4, 0).' + 1D4"</li>';
@@ -112,8 +117,7 @@ echo'</select>
       echo '<li>Taille figurine : '.$this->taille[$figurine[0]['taille']].'</li>';
       echo '<li>Armure : '.$this->armure[$figurine[0]['svg']].'</li>';
       echo '<li>Point de vie : '.$figurine[0]['pdv'].'</li>';
-      echo '<li>Figurine volante : '.$this->yes[$figurine[0]['vol']].'</li>';
-      echo '<li>Capacité de vol stationnaire : '.$this->yes[$figurine[0]['volStation']].'</li>';
+      echo $vol;
         if($RS == []) {
             echo '<li><strong class="liste">Pas encore de règles spéciales.</strong></li>';
         } else {
