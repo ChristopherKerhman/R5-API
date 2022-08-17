@@ -183,4 +183,18 @@ Class PrintArmes extends GetArmes {
     echo '</li>';
     echo '</ul>';
   }
+  public function addArme($variable, $idNav, $idFigurine, $cross) {
+    echo '<ul class="listeStandard nuageRS">';
+    foreach ($variable as $key => $value) {
+      echo '<li>
+              <form class="formulaireClassique" action="'.encodeRoutage(32).'" method="post">
+                <input type="hidden" name="cross" value="'.$cross.'" />
+                <input type="hidden" name="id_Arme" value="'.$value['idArme'].'" />
+                <input type="hidden" name="id_Figurine" value="'.$idFigurine.'" />
+                <button type="submit" name="idNav" value="'.$idNav.'">Ajouter '.$value['nomArme'].'</button>
+              </form>
+          </li>';
+    }
+    echo '</ul>';
+  }
 }

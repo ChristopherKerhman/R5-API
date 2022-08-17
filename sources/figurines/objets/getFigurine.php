@@ -53,7 +53,7 @@ ORDER BY `nomUnivers`, `nomFaction`, `nomFigurine`
     FROM `RS_Figurine`
     INNER JOIN `reglesSpeciales` ON `idRS` = `id_RS`
     WHERE `id_Figurine` = :idFigurine",
-    "SELECT `id_Arme`, `nomArme`, `description`, `range`,
+    "SELECT `idArme`, `nomArme`, `description`, `range`,
     `puissance`, `surPuissance`, `typeArme`, `couverture`,
     `cadenceTir`, `gabarit`
     FROM `Armes_Figurine`

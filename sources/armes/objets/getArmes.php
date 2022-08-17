@@ -65,4 +65,13 @@ Class GetArmes {
     return  $readRS->READ();
     // Fin de recherche
   }
+  public function getArmeByFaction ($idFaction) {
+    $select = "SELECT `idArme`, `id_Faction`, `nomArme`, `description`, `range`, `puissance`,
+    `surPuissance`, `typeArme`, `couverture`, `cadenceTir`, `gabarit`
+    FROM `armes`
+    WHERE `id_Faction` = :id_Faction AND `valide` = 1";
+    $param = [['prep'=>':id_Faction', 'variable'=>$idFaction]];
+    $readArmes = new RCUD($select, $param);
+    return $readArmes->READ();
+  }
 }
