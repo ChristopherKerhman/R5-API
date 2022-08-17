@@ -188,7 +188,10 @@ echo'</select>
     echo '<h3>Les figurines créées - Page : '.$currentPage.'</h3>';
     echo '<ul class="listeStandard">';
       foreach ($variable as $key => $value) {
+        $prix = new PrixFigurine($value['idFigurine']);
+        $prixF = $prix->coefFigurine ();
         echo '<li>
+        <p class="PrixBox">'.round($prixF, 0).'</p>
         <a class="navigationListe" href="'.findTargetRoute(111).'&idFigurine='.$value['idFigurine'].'">Voir fiche</a>
         <a class="navigationListe" href="'.findTargetRoute(114).'&idFigurine='.$value['idFigurine'].'">Ajouter RS</a>
         <a class="navigationListe" href="'.findTargetRoute(113).'&idFigurine='.$value['idFigurine'].'">Ajouter Armes</a>

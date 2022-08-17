@@ -67,7 +67,7 @@ Class PrixFigurine {
     WHERE `id_Figurine` = :id";
         $somme = new RCUD($somme, $this->paramID);
         $totalRS = $somme->READ();
-        $totalRS = $totalRS[0]['total'];
+        $totalRS = $totalRS[0]['total'] * 100;
     // Récupération des armes de la figurine
     $selectArmes = "SELECT `id_Arme`FROM `Armes_Figurine` WHERE `id_Figurine` = :id";
     $readIdArmes = new RCUD($selectArmes, $this->paramID);
@@ -92,6 +92,6 @@ Class PrixFigurine {
     $taille = $this->taille[$data[0]['taille']];
     $svg = $this->svg[$data[0]['svg']];
     $pdv = $data[0]['pdv'];
-    return $mouvement + $DC + $DQM + $role + $taille + $svg + $pdv + $sommeArmes;
+    return ($mouvement + $DC + $DQM + $role + $taille + $svg + $pdv + $sommeArmes + $totalRS)/10;
   }
 }

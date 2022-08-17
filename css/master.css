@@ -239,3 +239,16 @@ transition: display 3s;
 .marge {
   margin-top: 1em;
 }
+.PrixBox {
+  background-color: grey;
+  border: 1px solid  #6a0000;
+  width: 1em;
+  color: var(--main-color);
+  padding: var(--main-padding);
+  text-align: var(--main-text-align);
+  text-decoration: var(--main-text-decoration);
+  display: var(--main-display);
+  font-size: var(--main-font-size);
+  font-family: var(--main-font-family);
+  margin-right: 1em;
+}
