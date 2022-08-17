@@ -197,7 +197,7 @@ Class PrintArmes extends GetArmes {
     echo '</ul>';
   }
   public function listeDotation($variable, $DC) {
-    echo '<ul class="listeStandard">';
+    echo '<ul class="listeStandard marge">';
     foreach ($variable as $key => $value) {
       //Recherche des règles spéciale de l'arme
       $param = [['prep'=>':id_Arme', 'variable'=>$value['idArme']]];

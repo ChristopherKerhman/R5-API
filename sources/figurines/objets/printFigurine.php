@@ -198,14 +198,14 @@ echo'</select>
   }
     echo '</ul>';
   }
-  public function figurineComplet ($figurine, $armes, $RS) {
+  public function figurineComplet ($figurine, $armes, $RS, $prix) {
     //Affichage Statistique Figurine
     if(($figurine[0]['vol']>0)||($figurine[0]['volStation']>0)) {
       $vol = '<li>Figurine volante : '.$this->yes[$figurine[0]['vol']].'</li><li>Capacité de vol stationnaire : '.$this->yes[$figurine[0]['volStation']].'</li>';
     } else {
       $vol = '';
     }
-    echo '<h3>'.$figurine[0]['nomFigurine'].' | '.$figurine[0]['nomUnivers'].' - '.$figurine[0]['nomFaction'].'</h3>';
+    echo '<h3>'.$figurine[0]['nomFigurine'].' | '.$figurine[0]['nomUnivers'].' - '.$figurine[0]['nomFaction'].' Prix : '.round($prix, 0).' points</h3>';
     echo '<ul class="listeProfil">';
       echo '<li>Mouvement '.$figurine[0]['mouvement'].' " / '.round($figurine[0]['mouvement'] * 1.4, 0).' + 1D4"</li>';
       echo '<li>DQM : '.$this->de[$figurine[0]['DQM']].' | DC : '.$this->de[$figurine[0]['DC']].'</li>';
