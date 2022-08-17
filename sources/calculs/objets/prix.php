@@ -9,7 +9,7 @@ Class Prix {
     $this->puissance = [1, 2, 3, 4, 5, 6];
     $this->surPuissance = [0, 2];
     $this->type = [1, 2, 2];
-    $this->gabarit = [13, 50, 113, 36];
+    $this->gabarit = [0, 12, 50, 113, 75];
   }
   public function coefArme(){
     // Caractéristique primaire de l'arme
@@ -27,7 +27,7 @@ Class Prix {
     }
     $coef =  $range + $this->puissance[$data[0]['puissance']] +
     $data[0]['surPuissance'] + $this->type[$data[0]['typeArme']] +
-    $data[0]['couverture'] + $data[0]['cadenceTir'] + $this->gabarit[$data[0]['gabarit']];
+    $data[0]['couverture'] + $data[0]['cadenceTir'] + ($this->gabarit[$data[0]['gabarit']]*10);
     //Influence règle spéciales
     $select = "SELECT SUM(`prixRS`) AS `total`
     FROM `ArmesRS`

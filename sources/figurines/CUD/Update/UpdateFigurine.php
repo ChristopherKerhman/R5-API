@@ -14,14 +14,16 @@ $size = [
         ['nom'=>'volStation', 'max'=>1]];
 
   if(tailleDesChamps($_POST, $size)) {
-    $insert = "INSERT INTO `figurines`
-    ( `faction`, `role`, `taille`, `DC`, `DQM`, `mouvement`, `svg`, `pdv`, `vol`, `volStation`, `nomFigurine`, `texteFigurine`)
-    VALUES (:faction, :role, :taille, :DC, :DQM, :mouvement, :svg, :pdv, :vol, :volStation, :nomFigurine, :texteFigurine)";
+    $update = "UPDATE `figurines` SET `faction`=:faction,`role`=:role,`taille`=:taille,`DC`=:DC,`DQM`=:DQM,
+    `mouvement`=:mouvement,`svg`=:svg,`pdv`=:pdv,`vol`=:vol,
+    `volStation`=:volStation, `nomFigurine`=:nomFigurine, `texteFigurine`=:texteFigurine
+    WHERE `idFigurine` = :idFigurine";
       $parametre = new Preparation();
       $param = $parametre->creationPrep ($_POST);
-        $action = new RCUD($insert, $param);
+      print_r($param);
+        $action = new RCUD($update, $param);
         $action->CUD();
-    header('location:../index.php?message=Figurine enregistrée.&idNav='.$idNav);
+    header('location:../index.php?message=Figurine modifiée.&idNav='.$idNav.'&idFigurine='.filter($_POST['idFigurine']));
   } else {
     header('location:../index.php?message=Certain champs sont trop grand.&idNav='.$idNav);
   }

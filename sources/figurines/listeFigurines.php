@@ -6,7 +6,7 @@
  <form class="" action="<?php filter($_SERVER["PHP_SELF"]); ?>" method="post">
    <label for="id_Faction">Figurines de la faction ?</label>
    <select id="id_Faction" name="id_Faction">
-
+     <option value="0">Pas de tri</option>
      <?php
        $factions = new PrintUF();
        $dataFactions = $factions->listeFactions(1);
@@ -41,7 +41,9 @@ $pages = ceil($nbrArticle/$parPage);
 $premier = ($currentPage * $parPage) - $parPage;
 // Tri
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-  $dataFigurines = $figurines->getFigurines(1, $premier, $parPage, $tri);
+  if(filter($_POST['id_Faction']) == 0) {
+      $dataFigurines = $figurines->getAllFigurines(1, $premier, $parPage);
+  } else {$dataFigurines = $figurines->getFigurines(1, $premier, $parPage, $tri);}
 } else {
   $dataFigurines = $figurines->getAllFigurines(1, $premier, $parPage);
 }
