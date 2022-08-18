@@ -40,10 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     }
     array_push($dataFigurines[$i],$dataArmes);
   }
-  //print_r($dataFigurines);
-  //echo '<pre>';
   echo JSON_encode($dataFigurines);
-  //echo '</pre>';
 } else {
   echo json_encode(['error' => 'Aucune donnée']);
 }
