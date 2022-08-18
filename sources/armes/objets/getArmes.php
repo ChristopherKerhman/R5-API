@@ -1,15 +1,18 @@
 <?php
+
 Class GetArmes {
   protected $typeArmes;
   protected $yes;
   protected $gabarit;
   protected $puissance;
+  protected $surPuissance;
   protected $nbrD;
   public function __construct() {
     $this->typeArmes = ['Close', 'Tir', 'Explosif'];
     $this->yes = ['Non', 'Oui'];
     $this->gabarit = ['Pas de gabarit', 'Petit', 'Moyen', 'Grand', 'Cône'];
     $this->puissance = ['1D', '2D', '3D', '4D', '5D', '6D'];
+    $this->surPuissance = ['', '+'];
     $this->nbrD = [1, 2, 3, 4, 5, 6];
   }
   public function getArmes($valide, $premier, $parPage, $tri) {

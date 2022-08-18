@@ -9,7 +9,7 @@ Class Prix {
     $this->puissance = [1, 2, 3, 4, 5, 6];
     $this->surPuissance = [0, 2];
     $this->type = [1, 2, 2];
-    $this->gabarit = [0, 12, 50, 113, 75];
+    $this->gabarit = [1, 5, 10, 20, 12];
   }
   public function coefArme(){
     // Caractéristique primaire de l'arme
@@ -25,9 +25,11 @@ Class Prix {
     } else {
       $range = pi();
     }
-    $coef =  $range + $this->puissance[$data[0]['puissance']] +
-    $data[0]['surPuissance'] + $this->type[$data[0]['typeArme']] +
-    $data[0]['couverture'] + $data[0]['cadenceTir'] + ($this->gabarit[$data[0]['gabarit']]*10);
+    $coef =
+    log(($range + $this->puissance[$data[0]['puissance']]) * ($this->surPuissance[$data[0]['surPuissance']] +  $this->type[$data[0]['typeArme']]))
+    + $data[0]['couverture']
+    + $data[0]['cadenceTir']
+    + $this->gabarit[$data[0]['gabarit']];
     //Influence règle spéciales
     $select = "SELECT SUM(`prixRS`) AS `total`
     FROM `ArmesRS`
@@ -36,7 +38,7 @@ Class Prix {
     $param =  [['prep'=>':idArme', 'variable'=>$this->idArme]];
     $readRS = new RCUD($select, $param);
     $data = $readRS->READ();
-    return  $coef + (100 * $data[0]['total']);
+    return $coef * (1 + $data[0]['total']);
   }
 }
 Class PrixFigurine {
@@ -92,6 +94,8 @@ Class PrixFigurine {
     $taille = $this->taille[$data[0]['taille']];
     $svg = $this->svg[$data[0]['svg']];
     $pdv = $data[0]['pdv'];
-    return ($mouvement + $DC + $DQM + $role + $taille + $svg + $pdv + $sommeArmes + $totalRS)/10;
+    $totalFigurine =  ($mouvement + $DC + $DQM + $role + $taille + $svg + $pdv + $sommeArmes + $totalRS)/10 + $sommeArmes;
+
+    return $totalFigurine;
   }
 }
