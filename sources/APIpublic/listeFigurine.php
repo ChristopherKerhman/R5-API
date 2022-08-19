@@ -1,5 +1,6 @@
 <?php
 include 'APIHeader.php';
+require '../calculs/objets/prix.php';
 $idFaction = filter($_GET['idFaction']);
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
   // Requête
@@ -12,6 +13,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
   $dataFigurines = $readFigurines->READ();
   $toutesFigurineUnFaction = array();
   for ($i=0; $i <count($dataFigurines) ; $i++) {
+    $prixFigurine = new PrixFigurine($dataFigurines[$i]['idFigurine']);
+    $prix = ['prixFigurine'=>$prixFigurine->coefFigurine ()];
+    array_push($dataFigurines[$i],  $prix);
     $idF = [['prep'=>':id', 'variable'=>$dataFigurines[$i]['idFigurine']]];
     //Recherche RS
     $selectRS = "SELECT `nomRS`
