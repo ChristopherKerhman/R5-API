@@ -20,4 +20,10 @@ Class GetUF {
         $readData = new RCUD($select, $param);
         return $readData->READ();
   }
+  public function oneFaction ($idFaction) {
+    $select = "SELECT `nomFaction` FROM `factions` WHERE `idFaction` = :idFaction";
+    $param = [['prep'=>':idFaction', 'variable'=> $idFaction]];
+    $read = new RCUD($select, $param);
+    return $read->READ();
+  }
 }

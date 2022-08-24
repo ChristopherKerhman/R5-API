@@ -94,7 +94,7 @@ Class PrixFigurine {
     $taille = $this->taille[$data[0]['taille']];
     $svg = $this->svg[$data[0]['svg']];
     $pdv = $data[0]['pdv'];
-    $totalFigurine =  ($mouvement + $DC + $DQM + $role + $taille + $svg + $pdv + $sommeArmes + $totalRS)/10 + $sommeArmes;
+    $totalFigurine =  ($mouvement + $DC + $DQM + $role + $taille + $svg + $sommeArmes + $totalRS)/10 + $sommeArmes + ($pdv * 2);
 
     return $totalFigurine;
   }

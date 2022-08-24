@@ -3,7 +3,7 @@ include 'APIHeader.php';
 $typeRS = filter($_GET['typeRS']);
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
   // Requête
-  $select = "SELECT `idRS`, `nomRS`, `texteRS` FROM `reglesSpeciales` WHERE `typeRS` = :typeRS";
+  $select = "SELECT `idRS`, `nomRS`, `texteRS` FROM `reglesSpeciales` WHERE `typeRS` = :typeRS ORDER BY `nomRS`";
               $param = [['prep'=>':typeRS', 'variable'=>$typeRS]];
   $readData = new RCUD($select, $param);
   $dataUnivers = $readData->READ();

@@ -1,4 +1,5 @@
 <?php
+session_set_cookie_params(['samesite' => 'None']);
 session_start();
 include 'path.php';
 include   $securite.'timeSessionTest.php';

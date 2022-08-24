@@ -13,10 +13,12 @@ Class PrintUF extends GetUF {
       foreach ($variable as $key => $value) {
         echo '<li>';
         if($value['valide'] == 1){
+
           echo'<form class="formulaireClassique" action="'.encodeRoutage(25).'" method="post">
             <input type="hidden" name="idFaction" value="'.$value['idFaction'].'" />
             <button type="submit" name="idNav" value="'.$idNav.'">Effacer</button>
             </form>';
+
         } else {
           echo'<form class="formulaireClassique" action="'.encodeRoutage(26).'" method="post">
             <input type="hidden" name="idFaction" value="'.$value['idFaction'].'" />
@@ -24,6 +26,7 @@ Class PrintUF extends GetUF {
             </form>';
         }
         echo $value['nomUnivers'].' - '.$value['nomFaction'].'</li>';
+        echo '<a class="navigationListe" href="'.findTargetRoute(115).'&idFaction='.$value['idFaction'].'">Modifier nom '.$value['nomFaction'].'</a>';
       }
      echo'</ul>';
   }

@@ -220,6 +220,7 @@ transition: display 3s;
 }
 .navigationListe {
   margin-right: 1em;
+  margin-bottom: 0.5em;
 }
 .nuageRS {
   display: flex;

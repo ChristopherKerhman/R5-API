@@ -40,11 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
       $paramIdArme = [['prep'=>':idArme', 'variable'=>$dataArmes[$j]['idArme']]];
       $readRSArme = new RCUD($selectRSArme, $paramIdArme);
       $readRSA = $readRSArme->READ();
-      $RSArme = array();
-      foreach ($readRSA as $key => $value) {
-        array_push($RSArme, $value['nomRS']);
-      }
-        array_push($dataArmes[$j],[['RS'=>$RSArme]]);
+        array_push($dataArmes[$j],$readRSA);
     }
     array_push($dataFigurines[$i],$dataArmes);
   }
